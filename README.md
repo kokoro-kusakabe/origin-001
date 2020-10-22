@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column              | Type    | Option      |
+| ------------------- | ------- | ----------- |
+| email               | string  | null: false |
+| password            | string  | null: false |
+| nickname            | string  | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :tweets
+- has_many :comments
+- has_many :messages
+- has_one :profile
 
-* Configuration
+## tweetsテーブル
 
-* Database creation
+| Column        | Type       | Option                         |
+| --------------| ---------- | ------------------------------ |
+| title         | string     | null: false                    |
+| text          | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+belongs_to :user
+has_one :order
 
-* Services (job queues, cache servers, search engines, etc.)
+## commentsテーブル
 
-* Deployment instructions
+| Column    | Type       | Option                         |
+| --------- | ---------- | ------------------------------ |
+| text      | text       | null: false                    |
+| user      | references | null: false, foreign_key: true |
+| tweet     | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+belongs_to :user
+belongs_to :tweet
+
+## profileテーブル
+
+| Column        | Type       | Option                         |
+| ------------- | ---------- | ------------------------------ |
+| introduction  | text       |                                |
+| area_id       | integer    |                                |
+| hobby         | text       |                                |
+| user          | references | null: false, foreign_key: true |
+
+### Association
+
+belongs_to :user
+
+## messagesテーブル
+
+| Column    | Type       | Option                         |
+| --------- | ---------- | ------------------------------ |
+| text      | text       | null: false                    |
+| user      | references | null: false, foreign_key: true |
+
+### Association
+
+belongs_to :user
