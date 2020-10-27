@@ -4,5 +4,6 @@ class Tweet < ApplicationRecord
     validates :title
     validates :text
   end
-  
+
+  belongs_to :user
 end
