@@ -1,4 +1,10 @@
 <%= form_with(model: @tweet, local: true) do |f|%>
+
+  <div class="field">
+    <%= f.label :image, "画像" %><br />
+    <%= f.file_field :image %>
+  </div>
+
   <div>
     <%= f.label :title, "タイトルの入力" %><br />
     <%= f.text_field :title %>
@@ -8,6 +14,7 @@
     <%= f.label :text, "テキスト" %><br />
     <%= f.text_area :text %>
   </div>
+  
 
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
