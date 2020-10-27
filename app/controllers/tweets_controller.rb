@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to root_path
     else
-      render new
+      render :new
     end
   end
 
@@ -20,5 +20,5 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:title, :text).merge(user_id: current_user.id)
   end
-  
+
 end
