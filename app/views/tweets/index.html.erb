@@ -16,7 +16,9 @@
         </header>
         <nav>
         <div class ="nav1">
-        <div>新規投稿</div>
+        <div>
+        <%= link_to "新規投稿", new_tweet_path %>
+        </div>
         <div>検索ボックス</div>
         <div class = "btn">検索</div>
         </div>
@@ -31,7 +33,17 @@
         </ul>
         </div>
         </nav>
-        <main>記事一覧</main>
+        <main><h2>記事一覧</h2>
+            <ul>
+              <li>
+                <% @tweets.each do |tweet| %>
+                <div>
+                <%= tweet.title %>
+                </div>
+                <% end %>
+              </li>
+            </ul>
+        </main>
         <aside>ランキング</aside>
         <footer>footer</footer>
 </div>
