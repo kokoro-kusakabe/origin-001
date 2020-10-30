@@ -35,13 +35,15 @@
         </nav>
         <main><h2>記事一覧</h2>
             <ul>
+            <% @tweets.each do |tweet| %>
               <li>
-                <% @tweets.each do |tweet| %>
+                <%= link_to tweet_path(tweet[:id]) do %>
                 <div>
                 <%= tweet.title %>
                 </div>
                 <% end %>
               </li>
+              <% end %>
             </ul>
         </main>
         <aside>ランキング</aside>
