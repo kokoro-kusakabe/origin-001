@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :sns_credentials
   has_many :tweets
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
   
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
@@ -22,4 +24,6 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+
+
 end
