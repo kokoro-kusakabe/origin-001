@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
+    @tweet = Tweet.all
   end
   
   def new

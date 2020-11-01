@@ -35,7 +35,7 @@
         </nav>
         <main><h2>記事一覧</h2>
             <ul>
-            <% @tweets.each do |tweet| %>
+            <% @tweet.each do |tweet| %>
               <li>
                 <%= link_to tweet_path(tweet[:id]) do %>
                 <div>
@@ -46,6 +46,19 @@
               <% end %>
             </ul>
         </main>
-        <aside>ランキング</aside>
+        <aside>ランキング
+        <ul>
+            <% @tweets.each do |tweet| %>
+              <li>
+                <%= link_to tweet_path(tweet[:id]) do %>
+                <div>
+                <%= tweet.title %>
+                <%= tweet.likes.count %>
+                </div>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+        </aside>
         <footer>footer</footer>
 </div>
