@@ -3,6 +3,8 @@
 <div>
 <p>タイトル</p>
 <%= @tweet.title%>
+<p>投稿者</p>
+<%= @tweet.user.nickname%>
 </div>
 <div class = "image_size">
 <%= image_tag @tweet.image %>
@@ -11,4 +13,23 @@
 <p>内容</p>
 <%= @tweet.text%>
 </div>
+<div>
+<p>いいね   <%= @tweet.likes.count %></p>
+<% unless current_user == nil%>
+    <% if user_signed_in? && current_user.id == @tweet.user_id %>
+      <% elsif current_user.already_liked?(@tweet) %>
+          <%= link_to tweet_like_path(@tweet), method: :delete do %>
+          <div class = "iine_button">★</div>
+          <% end %>
+      <% else %>
+          <%= link_to tweet_likes_path(@tweet), method: :post do %>
+          <div class = "iine_button">☆</div>
+          <% end %>
+    <% end %>
+<% end %>
 </div>
+<div>
+<%= link_to "戻る", root_path %>
+</div>
+</div>
+
