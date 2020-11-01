@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :tweets
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
+  def already_liked?(tweet)
+    self.likes.exists?(tweet_id: tweet.id)
+  end
   
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
