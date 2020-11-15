@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
-  
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+
   validates :nickname, presence: true
 
   has_many :sns_credentials
@@ -14,15 +14,15 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   def already_liked?(tweet)
-    self.likes.exists?(tweet_id: tweet.id)
+    likes.exists?(tweet_id: tweet.id)
   end
-  
+
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
 
     user = User.where(email: auth.info.email).first_or_initialize(
       nickname: auth.info.name,
-        email: auth.info.email
+      email: auth.info.email
     )
     if user.persisted?
       sns.user = user
@@ -30,6 +30,4 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
-
-
 end
