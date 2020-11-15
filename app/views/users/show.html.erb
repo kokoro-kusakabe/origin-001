@@ -2,20 +2,23 @@
 
 
 <div>
-<% if @user.id == current_user.id %>
 
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">DM</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
-      <% end %>
-      <%= f.submit "DM" %>
+    <% unless user_signed_in?  %>
+    <% else %>
+        <% if @user.id == current_user.id %>
+        <% else %>
+          <% if @isRoom == true %>
+            <p><a href="/rooms/<%= @roomId %>">DM</a>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <%= f.submit "DM" %>
+            <% end %>
+          <% end %>
+        <% end %>
     <% end %>
-  <% end %>
-<% end %>
 
 </div>
 
