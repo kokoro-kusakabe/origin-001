@@ -1,0 +1,38 @@
+<h1>ユーザー詳細</h1>
+
+
+<div>
+
+    <% unless user_signed_in?  %>
+    <% else %>
+        <% if @user.id == current_user.id %>
+        <% else %>
+          <% if @isRoom == true %>
+            <p><a href="/rooms/<%= @roomId %>">DM</a>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <%= f.submit "DM" %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+
+</div>
+
+<div>
+<h2><%= "#{@user.nickname}さんの記事"%><h2>
+            <ul>
+            <% @tweets.each do |tweet| %>
+              <li>
+                <%= link_to tweet_path(tweet[:id]) do %>
+                <div>
+                <%= tweet.title %>
+                </div>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+</div>

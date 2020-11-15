@@ -4,7 +4,7 @@
 <p>タイトル</p>
 <%= @tweet.title%>
 <p>投稿者</p>
-<%= @tweet.user.nickname%>
+<%= link_to @tweet.user.nickname, user_path(@tweet.user.id) %>
 </div>
 <div class = "image_size">
 <%= image_tag @tweet.image %>
