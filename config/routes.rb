@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
   end
+  resources :messages, only: :create
+  resources :rooms, only: [:create, :show, :index]
 end
