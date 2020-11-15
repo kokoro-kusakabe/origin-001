@@ -1,0 +1,30 @@
+<h1>DM</h1>
+
+<div>
+<% @entries.each do |e| %>
+  <strong><%= e.user.nickname %>さん</strong>
+<% end %>
+</div>
+
+
+<div>
+<% if @messages.present? %>
+  <ul>
+  <% @messages.each do |m| %>
+  <li>
+    <strong><%= m.content %></strong>
+    <strong><%= m.user.nickname %>さん</strong>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <h3 class="text-center">メッセージはまだありません</h3>
+<% end %>
+
+<%= form_for @message do |f| %>
+  <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 80%>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <br>
+  <%= f.submit "投稿する" %>
+<% end %>
+</div>
