@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     @tweets = @user.tweets
     if user_signed_in?
-      @currentUserEntry=Entry.where(user_id: current_user.id)
-      @userEntry=Entry.where(user_id: @user.id)
+      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @userEntry = Entry.where(user_id: @user.id)
       if @user.id == current_user.id
-        else
+      else
         @currentUserEntry.each do |cu|
           @userEntry.each do |u|
-            if cu.room_id == u.room_id then
+            if cu.room_id == u.room_id
               @isRoom = true
               @roomId = cu.room_id
             end
@@ -24,5 +23,4 @@ class UsersController < ApplicationController
       end
     end
   end
-  
 end
