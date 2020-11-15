@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :sns_credentials
   has_many :tweets
+  has_many :comments
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
   def already_liked?(tweet)

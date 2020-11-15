@@ -28,6 +28,20 @@
     <% end %>
 <% end %>
 </div>
+<div class="contents">
+  <%= form_with(model: [@tweet, @comment], class: 'js-form') do |f| %>
+    <%= f.text_field :text %>
+    <%= f.submit %>
+  <% end %>
+  
+  <ul class="messages">
+  <% @comments.each do |comment| %>
+    <li class="message">
+    <%= comment.text %>
+    <%= comment.user.nickname %>
+    </li> 
+    <% end %>
+  </ul>
 <div>
 <%= link_to "戻る", root_path %>
 </div>
