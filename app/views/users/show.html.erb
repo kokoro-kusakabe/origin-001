@@ -1,0 +1,15 @@
+<h1>ユーザー詳細</h1>
+<div>
+<h2><%= "#{@user.nickname}さんの情報"%><h2>
+            <ul>
+            <% @tweets.each do |tweet| %>
+              <li>
+                <%= link_to tweet_path(tweet[:id]) do %>
+                <div>
+                <%= tweet.title %>
+                </div>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+</div>
