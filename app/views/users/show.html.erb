@@ -1,8 +1,14 @@
 <h1>ユーザー詳細</h1>
-
+<%= render 'stats' %>
+<% flash.each do |name, msg| -%>
+<%= content_tag :div, msg, class: name %>
+<% end %>
+<% unless user_signed_in?  %>
+<% else %>
+<%= render "relationships/follow_button", user: @user %>
+<% end %>
 
 <div>
-
     <% unless user_signed_in?  %>
     <% else %>
         <% if @user.id == current_user.id %>
@@ -19,7 +25,6 @@
           <% end %>
         <% end %>
     <% end %>
-
 </div>
 
 <div>
