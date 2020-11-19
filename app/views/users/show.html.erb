@@ -22,7 +22,7 @@
               <%= fields_for @entry do |e| %>
                 <%= e.hidden_field :user_id, value: @user.id %>
               <% end %>
-              <%= f.submit "DM" %>
+              <h2><%= f.submit "DMをおくりますか？",class: "btn aria-disabled=true" %></h2>
             <% end %>
           <% end %>
         <% end %>
