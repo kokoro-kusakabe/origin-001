@@ -28,7 +28,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">カテゴリ</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
           <% @categories.each do |category| %>
-            <li class="dropdown-item"><%= link_to "#{category.name}", "categories/#{category.id}", class: "text-reset text-decoration-none" %></li>
+            <li class="dropdown-item"><%= link_to "#{category.name}", category_path(category.id), class: "text-reset text-decoration-none"  %></li>
             <% end %>
           </ul>
       </li>
