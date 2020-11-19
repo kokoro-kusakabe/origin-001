@@ -25,11 +25,11 @@
         </li>
       <% end %>
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">カテゴリ</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <% @categories.each do |category| %>
+            <li class="dropdown-item"><%= link_to "#{category.name}", "categories/#{category.id}", class: "text-reset text-decoration-none" %></li>
+            <% end %>
           </ul>
       </li>
     </ul>

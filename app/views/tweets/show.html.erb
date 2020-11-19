@@ -18,6 +18,14 @@
         <%= image_tag @tweet.image %>
       </div>
 
+
+            <div class="text-center">
+              <p class="text-center">カテゴリ名</p>
+              <% @tweet.categories.each do |category| %>
+                <%= category.name%>
+              <% end %>
+              </div>
+
       <p class="text-center">いいね   <%= @tweet.likes.count %></p>
 <% unless current_user == nil%>
     <% if user_signed_in? && current_user.id == @tweet.user_id %>
