@@ -1,6 +1,7 @@
 class Tweet < ApplicationRecord
   with_options presence: true do
     validates :title
+    validates :category_ids, uniqueness: false
     validates :text, length: { maximum: 50 }
     validates :image, length: { maximum: 140 }
   end
@@ -10,4 +11,6 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
+  has_many :tweet_category_relations
+  has_many :categories, through: :tweet_category_relations
 end

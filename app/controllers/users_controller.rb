@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def show
+    @categories = Category.all
     @user = User.find(params[:id])
     @tweets = @user.tweets
     if user_signed_in?
@@ -26,12 +27,14 @@ class UsersController < ApplicationController
   end
 
   def following
+    @categories = Category.all
     @user  = User.find(params[:id])
     @users = @user.followings
     render 'show_follow'
   end
 
   def followers
+    @categories = Category.all
     @user  = User.find(params[:id])
     @users = @user.followers
     render 'show_follower'
