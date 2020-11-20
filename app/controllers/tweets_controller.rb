@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
       redirect_to root_path
