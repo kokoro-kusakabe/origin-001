@@ -28,6 +28,29 @@ class TweetsController < ApplicationController
     @categories = Category.all
   end
 
+  def edit
+    @categories = Category.all
+    @tweet = Tweet.find(params[:id])
+  end
+  
+
+  def update
+      @categories = Category.all
+      @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to tweet_path
+    else 
+      render :edit
+    end
+  end
+
+  def destroy
+    @categories = Category.all
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to root_path
+  end
+
   private
 
   def tweet_params
