@@ -11,7 +11,7 @@
       <% if user_signed_in? && current_user.id == @tweet.user_id %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_tweet_path(@tweet.id), method: :get, class: :prototype__btn %>
-          <% link_to "削除する", "/tweets/#{@tweet.id}", method: :delete, class: :prototype__btn %>
+          <%= link_to "削除する", "/tweets/#{@tweet.id}", method: :delete, class: :prototype__btn %>
         </div>
       <% end %>
 
