@@ -10,6 +10,3 @@ script:
   - docker-compose exec --env 'RAILS_ENV=test' app rails db:migrate
   - docker-compose exec --env 'RAILS_ENV=test' app rails db:seed
   - docker-compose exec --env 'RAILS_ENV=test' app bundle exec rspec spec/models/user_spec.rb
-
-before_script:
-  - "cp config/database_travis.yml config/database.yml"
