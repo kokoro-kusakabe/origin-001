@@ -202,7 +202,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-
+    rexml (3.2.4)
     rspec-core (3.10.0)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.0)
@@ -220,8 +220,6 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.10.0)
-
-    rexml (3.2.4)
     rubocop (0.92.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -236,7 +234,6 @@ GEM
     ruby-progressbar (1.10.1)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
-
     ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
@@ -304,12 +301,9 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
-
   factory_bot_rails
   faker
-
   image_processing (~> 1.2)
-
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   mini_magick
@@ -319,11 +313,8 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 6.0.0)
-
   rspec-rails
-
   rubocop
-
   sass-rails (~> 5)
   selenium-webdriver
   spring
