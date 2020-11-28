@@ -1,0 +1,46 @@
+<header class='top-page-header'>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+  <%= link_to(root_path, class: "text-reset text-decoration-none") do %>
+    <div class="navbar-brand">SHARE LINK</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <% end %>
+    <div class="collapse navbar-collapse" id="navbarCollapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto mb-2 mb-md-0">
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <div class="nav-link" aria-current="page" ><%= link_to "マイページ", user_path(current_user.id), class: "text-reset text-decoration-none" %></div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "text-reset text-decoration-none" %></div>
+        </li>
+        <% else %>
+        <li class="nav-item active">
+          <div class="nav-link" aria-current="page" ><%= link_to "新規登録", new_user_registration_path , class: "text-reset text-decoration-none" %></div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link"><%= link_to 'ログイン', new_user_session_path, class: "text-reset text-decoration-none" %></div>
+        </li>
+      <% end %>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">カテゴリ</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown01">
+          <% @categories.each do |category| %>
+            <li class="dropdown-item"><%= link_to "#{category.name}", category_path(category.id), class: "text-reset text-decoration-none"  %></li>
+            <% end %>
+          </ul>
+      </li>
+    </ul>
+      
+      <form class="d-flex">
+        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</header>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
