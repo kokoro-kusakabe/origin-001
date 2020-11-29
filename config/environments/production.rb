@@ -111,5 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.assets.js_compressor = :uglifier
+
+  config.action_controller.asset_host = 'mycdnsubdomain.fictional-cdn.com'
   
 end
