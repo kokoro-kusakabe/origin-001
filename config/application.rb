@@ -12,13 +12,7 @@ module Origin001
     config.load_defaults 6.0
 
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
-    config.assets.initialize_on_precompile = false
 
-    Rails.application.config.assets.paths << Rails.root.join('vendor', 'fonts')
-    Rails.application.config.assets.paths << Rails.root.join('vendor', 'images')
-    Rails.application.config.assets.paths << Rails.root.join('vendor', 'javascripts')
-    Rails.application.config.assets.paths << Rails.root.join('vendor', 'stylesheets')
-    Rails.application.config.assets.precompile += %w(*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif )
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
